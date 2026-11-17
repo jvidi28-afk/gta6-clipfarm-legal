@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Authorization</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+<h1>Finishing sign-in…</h1>
+<p id="msg">Passing the authorization back to the local uploader.</p>
+<script>
+  // Hands the OAuth result (code/state) to the uploader running on the operator's own PC.
+  // Nothing is stored or sent anywhere else.
+  var q = window.location.search;
+  if (q) {
+    window.location.replace("http://127.0.0.1:8765/callback" + q);
+  } else {
+    document.getElementById("msg").textContent = "No authorization data received.";
+  }
+</script>
+</main>
+</body>
+</html>
